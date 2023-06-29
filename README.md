@@ -11,7 +11,7 @@
 Echodb is a tiny system for collecting and scheduling music data pipeline from [Spotify](https://engineering.atspotify.com/). In short, it allows you:
 
 * Collect playlist such as `Discovery Weekly`, `Release Radar` (or even custom events of your choosing).
-* Utilizing a scalable database system, employing [Postgresql](https://www.postgresql.org/) as the storage engine, coupled with [SQLAlchemy](https://www.sqlalchemy.org/) as the Object-Relational Mapping (ORM) framework 
+* Utilizing a scalable database system, employing **[Postgresql](https://www.postgresql.org/)** as the storage engine, coupled with **[SQLAlchemy](https://www.sqlalchemy.org/)** as the Object-Relational Mapping (ORM) framework 
 * Leverage a wide range of tools to model and analyze the behavioral data.
 
 ---
