@@ -1,4 +1,4 @@
-# Echodb - A tiny database system
+# Echodb - A tiny elt system
 
 ![Python](https://img.shields.io/badge/Made%20With-Python%203.8-blue.svg?style=for-the-badge&logo=Python&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
@@ -6,14 +6,10 @@
 
 **Update** (15 December 2022): View the web application here at [Resonance](https://resonance.streamlit.app/)
 
-## About the project
+---
 
-**Resonance** is a Content-based Recommendation System which suggests songs given user playlists. It has approximately *60,000* songs in its database, extracted and transformed using the **Spotify Million Playlist Dataset**.
+## Echodb stack 101
 
-### Spotify Million Playlist Dataset
-
-A dataset of 1 million playlists consisting of over 2 million unique tracks by nearly 300,000 artists. For simplicity, I will just extract the first 1000 playlists which contain approximately 60,000 tracks
-## Pipeline
 ![Pipeline](data/pipeline.png)
 
 ## Requirements
