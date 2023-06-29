@@ -25,7 +25,7 @@ The repository structure follows the conceptual architecture of Echodb, which co
 
 To briefly explain these six sub-systems:
 
-* **[Storage][storage]** utilizes a scalable database system, employing **[Postgresql](https://www.postgresql.org/)** as the storage engine, coupled with **[SQLAlchemy](https://www.sqlalchemy.org/)** as the Object-Relational Mapping (ORM) framework.
+* **[Storage][storage]** utilizes a scalable database system, employing `Postgresql` as the storage engine, coupled with `SQLAlchemy` as the Object-Relational Mapping (ORM) framework.
 * **[Data modeling][data-modeling]** is where event-level data is joined with other data sets and aggregated into smaller data sets, and business logic is applied. This produces a clean set of tables which make it easier to perform analysis on the data. We officially support data models for Redshift, Snowflake and BigQuery.
 
 
