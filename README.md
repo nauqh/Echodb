@@ -22,7 +22,7 @@ Echodb is a tiny system for collecting and scheduling music data pipeline from [
 
 ![Pipeline](data/stack.png)
 
-The repository structure follows the conceptual architecture of Echodb, which consists of six loosely-coupled sub-systems connected by five standardized data protocols/formats.
+The repository structure follows the conceptual architecture of Echodb, which consists of four loosely-coupled sub-systems.
 
 To briefly explain these six sub-systems:
 
