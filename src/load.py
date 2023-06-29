@@ -1,21 +1,22 @@
 """
 Load data to Postgresql 
 """
-import time
-import psycopg2
+import time, hydra, psycopg2
 import pandas as pd
+from omegaconf import DictConfig
 from psycopg2.extras import RealDictCursor
 from .log import get_log
 
 log = get_log(__name__)
 
-def get_db():
+@hydra.main(version_base=None, config_path="../config", config_name="main")
+def get_db(cfg: DictConfig):
     while True:
         try:
-            conn = psycopg2.connect(host='localhost',
-                                database='resonance', 
-                                user='postgres', 
-                                password='Ilovemyfamily110',
+            conn = psycopg2.connect(host=cfg['db']['host'],
+                                database=cfg['db']['database'], 
+                                user=cfg['db']['user'], 
+                                password=cfg['db']['pwd'],
                                 cursor_factory=RealDictCursor)
             curr = conn.cursor()
             print(f"🏬 Connected to database")
