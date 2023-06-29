@@ -6,6 +6,7 @@ if __name__ == "__main__":
     db = Database()
 
     token = get_token()
+    print(token)
     urls = get_user_playlists(token)
 
     for url in urls:
