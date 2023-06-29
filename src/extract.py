@@ -4,16 +4,18 @@ from tqdm import tqdm
 from requests import get
 from omegaconf import DictConfig
 from spotipy.util import prompt_for_user_token as pm
+from .log import get_log
+
+log = get_log(__name__)
 
 
 @hydra.main(version_base=None, config_path="../config", config_name="main")
 def get_token(cfg: DictConfig) -> str:
-    # token = pm(scope=cfg['spotify']['scope'],
-    #            client_id=cfg['spotify']['id'],
-    #            client_secret=cfg['spotify']['secret'],
-    #            redirect_uri=cfg['spotify']['redirect'])
-    print(cfg['spotify']['id'])
-    return None
+    token = pm(scope=cfg['spotify']['scope'],
+               client_id=cfg['spotify']['id'],
+               client_secret=cfg['spotify']['secret'],
+               redirect_uri=cfg['spotify']['redirect'])
+    return token
 
 
 def get_header(token: str):
@@ -95,3 +97,39 @@ def get_audio_features(token: str, track_id: str) -> dict:
     features['duration_ms'] = resp['duration_ms']
     features['time_signature'] = resp['time_signature']
     return features
+
+
+def extract_playlist(token: str, playlist_url: str) -> tuple[dict, pd.DataFrame, pd.DataFrame]:
+    playlist = get_playlist(token, playlist_url)
+
+    # Get playlist info as dict
+    playlist_info = get_playlist_info(playlist)
+
+    if playlist['name'] not in ['Discover Weekly', 'Release Radar', 'Pop Rising']:
+        return (None, None, None)
+
+    # Get tracks info as dataframe
+    tracks = []
+    features = []
+
+    for i in tqdm(range(len(playlist['tracks']['items']))):
+        track = get_track_info(playlist, i)
+        track_id = track['track_id']
+
+        tracks.append(track)
+        features.append(get_audio_features(token, track_id))
+    log.info(
+        f"Extracted {len(playlist['tracks']['items'])} tracks from {playlist['name']}!")
+    track_df = pd.DataFrame(tracks)
+    feature_df = pd.DataFrame(features)
+
+    # Get artists info as dataframe
+    artist_set = set(track_df['artist_id'].tolist())
+    artists = []
+    for i in tqdm(range(len(list(artist_set)))):
+        artists.append(get_artist_info(token, list(artist_set)[i]))
+    artist_df = pd.DataFrame(artists)
+    log.info(
+        f"Extracted {len(list(artist_set))} artist from {playlist['name']}!")
+
+    return playlist_info, artist_df, pd.merge(track_df, feature_df, on='track_id')
