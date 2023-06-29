@@ -1,11 +1,9 @@
 """
 Load data to Postgresql 
 """
-import time, hydra, psycopg2, logging
-import pandas as pd
-from omegaconf import DictConfig
+import time, logging, psycopg2 as pg, pandas as pd
 from psycopg2.extras import RealDictCursor
-from log import get_log
+from .log import get_log
 
 logging.basicConfig(filename='data/logs.log',
                         # format="%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
@@ -13,15 +11,14 @@ logging.basicConfig(filename='data/logs.log',
                         datefmt='%H:%M:%S')
 log = get_log(__name__)
 
-@hydra.main(version_base=None, config_path="../config", config_name="main")
-def get_db(cfg: DictConfig):
+def get_db():
     while True:
         try:
-            conn = psycopg2.connect(host=cfg['db']['host'],
-                                database=cfg['db']['database'], 
-                                user=cfg['db']['user'], 
-                                password=cfg['db']['pwd'],
-                                cursor_factory=RealDictCursor)
+            conn = pg.connect(host= "localhost",
+                              database= "resonance",
+                              user= "postgres",
+                              password= "Ilovemyfamily110",
+                              cursor_factory=RealDictCursor)
             curr = conn.cursor()
             print(f"🏬 Connected to database")
             break
