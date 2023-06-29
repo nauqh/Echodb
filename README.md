@@ -10,7 +10,7 @@
 
 ## Echodb stack 101
 
-![Pipeline](data/pipeline.png)
+![Pipeline](data/stack.png)
 
 ## Requirements
 
