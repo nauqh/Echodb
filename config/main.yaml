@@ -1,0 +1,5 @@
+spotify:
+    id: "e153ae521bba44e89b92d14e6630f208"
+    secret: "11a4c23e0e08436fb14789727a7942d7"
+    scope: "user-library-read playlist-read-private"
+    redirect: "http://localhost:7777/callback"
