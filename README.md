@@ -8,7 +8,7 @@
 
 ## About the project
 
-Echodb is a tiny system for collecting and scheduling music data pipeline from [Spotify](https://engineering.atspotify.com/). In short, it allows you:
+Echodb is a tiny system for collecting and scheduling music data pipeline from [Spotify](https://engineering.atspotify.com/). In short, it allows you to:
 
 * Collect playlist such as `Discovery Weekly`, `Release Radar` (or even custom events of your choosing).
 * Store the data in a scalable database w/ [Postgresql](https://www.postgresql.org/) and [SQLAlchemy](https://www.sqlalchemy.org/).
