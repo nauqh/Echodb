@@ -27,9 +27,8 @@ To briefly explain these six sub-systems:
 
 * **[Extractor][extractor]** Utilizes `Prefect` as an orchestration scheduler and `Pydantic` for data validation, ensuring successful reception and processing of Spotify data from various trackers and storing them in different dataframes. Once validated, the data is then made available in-stream for real-time processing, and can also be loaded to blob storage and data warehouse for analysis.
 * **[Storage][storage]** relies on `Postgresql` as the primary database for storing Spotify data, and leverages `SQLAlchemy` as the interface for efficient data modeling, retrieval, and manipulation.
-* **[Analytics][analytics]** Employs Plotly for visualizing the Snowplow event data, Pandas for data transformation and preparation, and Streamlit for deploying interactive dashboards that enable exploration and sharing of insights derived from the analyzed data.
+* **[Analytics][analytics]** employs Plotly for visualizing the Snowplow event data, Pandas for data transformation and preparation, and Streamlit for deploying interactive dashboards that enable exploration and sharing of insights derived from the analyzed data.
 
-**For more information on the current Snowplow architecture, please see the [Technical architecture][architecture]**.
 
 [extractor]: https://www.postgresql.org/
 [storage]: https://www.postgresql.org/
