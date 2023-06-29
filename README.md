@@ -25,9 +25,12 @@ The repository structure follows the conceptual architecture of Echodb, which co
 
 To briefly explain these six sub-systems:
 
-* **[Storage][storage]** utilizes a scalable database system, employing `Postgresql` as the storage engine, coupled with `SQLAlchemy` as the Object-Relational Mapping (ORM) framework.
-* **[Data modeling][data-modeling]** is where event-level data is joined with other data sets and aggregated into smaller data sets, and business logic is applied. This produces a clean set of tables which make it easier to perform analysis on the data. We officially support data models for Redshift, Snowflake and BigQuery.
+* **[Extractor][extractor]** Utilizes `Prefect` as an orchestration scheduler and `Pydantic` for data validation, ensuring successful reception and processing of Spotify data from various trackers and storing them in different dataframes. Once validated, the data is then made available in-stream for real-time processing, and can also be loaded to blob storage and data warehouse for analysis.
+* **[Storage][storage]** relies on `Postgresql` as the primary database for storing Spotify data, and leverages `SQLAlchemy` as the interface for efficient data modeling, retrieval, and manipulation.
+* **[Analytics][analytics]** Employs Plotly for visualizing the Snowplow event data, Pandas for data transformation and preparation, and Streamlit for deploying interactive dashboards that enable exploration and sharing of insights derived from the analyzed data.
 
+**For more information on the current Snowplow architecture, please see the [Technical architecture][architecture]**.
 
+[extractor]: https://www.postgresql.org/
 [storage]: https://www.postgresql.org/
-[data-modeling]: https://www.postgresql.org/
+[analytics]: https://www.postgresql.org/
