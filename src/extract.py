@@ -1,3 +1,6 @@
+"""
+Extract data from Spotify API
+"""
 import hydra
 import pandas as pd
 from tqdm import tqdm

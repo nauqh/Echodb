@@ -1,5 +1,5 @@
 """
-Postgresql Database Connector
+Load data to Postgresql 
 """
 import time
 import psycopg2
