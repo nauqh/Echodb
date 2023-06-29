@@ -2,6 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Made%20With-Python%203.8-blue.svg?style=for-the-badge&logo=Python&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
 **Update** (30 June 2023): View the web application here at [Resonance](https://resonance.streamlit.app/)
 
@@ -29,7 +30,7 @@ To briefly explain these six sub-systems:
 * **[Storage][storage]** relies on `PostgreSQL` as a robust and feature-rich database system for persistent storage of Spotify data, while leveraging `SQLAlchemy` as the ORM tool for simplified interaction with the database.
 * **[Analytics][analytics]** employs `Plotly` for creating interactive and visually appealing data visualizations, `Pandas` for data transformation and analysis, and `Streamlit` for deploying intuitive and user-friendly dashboards to explore and analyze Spotify data.
 
-[orchestrator]: https://www.postgresql.org/
-[extractor]: https://www.postgresql.org/
+[orchestrator]: https://www.prefect.io/
+[extractor]: https://developer.spotify.com/documentation/web-api
 [storage]: https://www.postgresql.org/
-[analytics]: https://www.postgresql.org/
+[analytics]: https://resonance.streamlit.app/
