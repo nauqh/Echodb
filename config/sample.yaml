@@ -1,0 +1,10 @@
+spotify:
+    id: CLIENT_ID
+    secret: CLIENT_SECRET
+    scope: "user-library-read playlist-read-private"
+    redirect: REDIRECT_URI
+db:
+    host: HOST
+    database: DB_NAME
+    user: USER_NAME
+    pwd: PASSWORD
