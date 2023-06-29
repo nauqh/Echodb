@@ -5,7 +5,7 @@ import time, hydra, psycopg2, logging
 import pandas as pd
 from omegaconf import DictConfig
 from psycopg2.extras import RealDictCursor
-from .log import get_log
+from log import get_log
 
 logging.basicConfig(filename='data/logs.log',
                         # format="%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
@@ -124,3 +124,4 @@ class Database():
         if table == "playlist":
             return recs
         return pd.DataFrame([i.copy() for i in recs])
+

@@ -1,7 +1,16 @@
 import streamlit as st
-from src import extract, load
+from src.extract import *
+from src.load import Database
 
-st.set_page_config(
-    page_title="Echodb",
-    page_icon="📡",
-    layout="wide")
+if __name__ == "__main__":
+    db = Database()
+
+    token = get_token()
+    urls = get_user_playlists(token)
+
+    for url in urls:
+        playlist, artists, tracks = extract_playlist(token, url)
+        if playlist != None:
+            db.add_playlist(playlist)
+            db.add_artists(artists)
+            db.add_tracks(tracks)

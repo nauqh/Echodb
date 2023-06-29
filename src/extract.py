@@ -141,3 +141,13 @@ def extract_playlist(token: str, playlist_url: str) -> tuple[dict, pd.DataFrame,
         f"Extracted {len(list(artist_set))} artist from {playlist['name']}!")
 
     return playlist_info, artist_df, pd.merge(track_df, feature_df, on='track_id')
+
+
+def get_user_playlists(token):
+    headers = get_header(token)
+    response = get('https://api.spotify.com/v1/me/playlists',
+                   headers=headers).json()
+    urls = []
+    for item in response['items']:
+        urls.append(item['external_urls']['spotify'])
+    return urls

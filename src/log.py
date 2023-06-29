@@ -24,7 +24,6 @@ class CustomFormatter(logging.Formatter):
 
 
 def get_log(name):
-
     log = logging.getLogger(name)
     log.setLevel(logging.DEBUG)
 

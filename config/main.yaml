@@ -6,5 +6,5 @@ spotify:
 db:
     host: "localhost"
     database: "resonance"
-    user: "postgres",
+    user: "postgres"
     pwd: "Ilovemyfamily110"
