@@ -1,12 +1,16 @@
 """
 Load data to Postgresql 
 """
-import time, hydra, psycopg2
+import time, hydra, psycopg2, logging
 import pandas as pd
 from omegaconf import DictConfig
 from psycopg2.extras import RealDictCursor
 from .log import get_log
 
+logging.basicConfig(filename='data/logs.log',
+                        # format="%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
+                        format=":orange[[%(asctime)s]] %(levelname)s %(message)s",
+                        datefmt='%H:%M:%S')
 log = get_log(__name__)
 
 @hydra.main(version_base=None, config_path="../config", config_name="main")

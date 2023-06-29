@@ -2,6 +2,7 @@
 Extract data from Spotify API
 """
 import hydra
+import logging
 import pandas as pd
 from tqdm import tqdm
 from requests import get
@@ -9,6 +10,10 @@ from omegaconf import DictConfig
 from spotipy.util import prompt_for_user_token as pm
 from .log import get_log
 
+logging.basicConfig(filename='data/logs.log', filemode='w',
+                    # format="%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
+                    format=":orange[[%(asctime)s]] %(levelname)s %(message)s",
+                    datefmt='%H:%M:%S')
 log = get_log(__name__)
 
 

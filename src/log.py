@@ -24,16 +24,10 @@ class CustomFormatter(logging.Formatter):
 
 
 def get_log(name):
-    logging.basicConfig(filename='app/data/logs.log',
-                        # format="%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
-                        format=":orange[[%(asctime)s]] %(levelname)s %(message)s",
-                        datefmt='%H:%M:%S')
 
-    # create logger with 'spam_application'
     log = logging.getLogger(name)
     log.setLevel(logging.DEBUG)
 
-    # create console handler with a higher log level
     ch = logging.StreamHandler()
     ch.setLevel(logging.DEBUG)
     ch.setFormatter(CustomFormatter())
