@@ -2,11 +2,9 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 from src.extract import *
-from src.load import Database
 from src.utils import *
 
 # TODO: APP SETUP
-# db = Database()
 st.set_page_config(
     page_title="Echodb",
     page_icon="📡",
@@ -47,13 +45,11 @@ t = pd.read_csv("data/tracks.csv")
 # TODO: MEDIA IFRAME
 with st.container():
     tracks, artists = get_timeline("data/logs.log")
-    # infos = db.view("playlist")
     infos = pd.read_csv("data/playlist.csv").to_dict(orient="records")
 
     l, m, r = st.columns([1, 1, 1])
     with l:
         fig = graph_portion(len(t), len(a))
-        # fig = graph_portion(len(db.view('track')), len(db.view('artist')))
         st.plotly_chart(fig, True)
 
     with m:
@@ -69,8 +65,6 @@ with st.container():
         with tabr:
             components.iframe(f"https://open.spotify.com/embed/playlist/{infos[2]['playlist_id']}?utm_source=generator",
                               height=160)
-        # st.markdown(f"**Tracks**: {len(db.view('track'))} new tracks")
-        # st.markdown(f"**Artists**: {len(db.view('artist'))} new artists")
         st.markdown(f"**Tracks**: {len(t)} new tracks")
         st.markdown(f"**Artists**: {len(a)} new artists")
         st.markdown(f"**Timelapse**: `{calc_timelapse('data/logs.log')}`")
@@ -83,7 +77,6 @@ with st.container():
 # TODO: ARTIST VIEW
 st.write("##")
 l, r = st.columns([1, 3])
-# view = db.view("artist")
 view = a
 with l:
     st.header("Artist View")
@@ -102,7 +95,6 @@ with r:
 # TODO: TRACK VIEW
 st.write("##")
 st.header("Track View")
-# view = db.view("track")
 view = t
 st.dataframe(filter_dataframe(view), hide_index=True)
 st.download_button(
