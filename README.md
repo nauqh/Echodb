@@ -5,7 +5,7 @@
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Spotify](https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white)
 
-**Update** (30 June 2023): View the web application here at [Resonance](https://resonance.streamlit.app/)
+**Update** (30 June 2023): View the web application here at [Echodb](https://echodb.streamlit.app/)
 
 ## About the project
 
