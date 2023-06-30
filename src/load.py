@@ -6,9 +6,8 @@ from psycopg2.extras import RealDictCursor
 from .log import get_log
 
 logging.basicConfig(filename='data/logs.log',
-                        # format="%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
-                        format=":orange[[%(asctime)s]] %(levelname)s %(message)s",
-                        datefmt='%H:%M:%S')
+                    format=":orange[[%(asctime)s]] %(levelname)s %(message)s",
+                    datefmt='%H:%M:%S')
 log = get_log(__name__)
 
 def get_db():

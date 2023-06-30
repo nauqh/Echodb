@@ -8,7 +8,7 @@ from requests import get
 from spotipy.util import prompt_for_user_token as pm
 from .log import get_log
 
-logging.basicConfig(filename='data/logs.log', filemode='w',
+logging.basicConfig(filename='data/logs.log',
                     format=":orange[[%(asctime)s]] %(levelname)s %(message)s",
                     datefmt='%H:%M:%S')
 log = get_log(__name__)
