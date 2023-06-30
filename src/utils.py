@@ -69,18 +69,18 @@ def graph_sunburst():
     colors = ['#b9fbc0', '#98f5e1', '#8eecf5',
               '#90dbf4', '#a3c4f3', '#cfbaf0', 'f1c0e8']
     fig = go.Figure(go.Sunburst(
-        labels=["Spotify", "Rock", "Pop", "R&B",
+        labels=["Genres", "Rock", "Pop", "R&B",
                 "EDM", "Rap", "K-Pop", "Metal", "V-Pop"],
-        parents=["", "Spotify", "Spotify", "Spotify",
-                 "Spotify", "Spotify", "Pop", "EDM", "Pop"],
-        values=[10, 14, 12, 10, 2, 6, 6, 4, 4]
+        parents=["", "Genres", "Genres", "Genres",
+                 "Genres", "Genres", "Pop", "EDM", "Pop"],
+        values=[8, 14, 12, 10, 2, 6, 6, 4, 4]
     ))
 
     fig.update_traces(marker=dict(colors=colors),
                       textfont_color="#000", textfont_size=15)
 
     fig.update_layout(title={
-        'text': "Popular genres (click at Pop, EDM for interaction)",
+        'text': "(click at Pop, EDM for interaction)",
         'y': 0.9,
         'x': 0.5,
         'xanchor': 'center',
