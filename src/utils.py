@@ -73,7 +73,7 @@ def graph_sunburst():
                 "EDM", "Rap", "K-Pop", "Metal", "V-Pop"],
         parents=["", "Spotify", "Spotify", "Spotify",
                  "Spotify", "Spotify", "Pop", "EDM", "Pop"],
-        values=[0, 14, 12, 10, 2, 6, 6, 4, 4]
+        values=[10, 14, 12, 10, 2, 6, 6, 4, 4]
     ))
 
     fig.update_traces(marker=dict(colors=colors),
