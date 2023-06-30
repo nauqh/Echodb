@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from src.utils import *
+from PIL import Image
 
 # TODO: APP SETUP
 st.set_page_config(
@@ -105,17 +106,33 @@ st.download_button(
 
 # TODO: Overview
 st.markdown("##")
-st.subheader("🗃️ About the project")
-st.markdown("""
-Echodb is a tiny system for collecting and scheduling music data pipeline from Spotify. 
+st.header("About the project")
 
-In short, it allows you to:
+image = Image.open('data/stack.jpg')
+st.image(image, caption='Echodb architecture')
 
-* Collect playlist such as `Discovery Weekly`, `Release Radar` (or even custom events of your choosing).
-* Store the data in a scalable database w/ [Postgresql](https://www.postgresql.org/) and [SQLAlchemy](https://www.sqlalchemy.org/).
-* Leverage a wide range of tools to model and analyze the behavioral data.
-* Generate reports and deploy online dashboard for easy management.
+l, r = st.columns([1, 1])
+with l:
+    st.subheader("About")
+    st.markdown("""
+    Echodb is a tiny system for collecting and scheduling music data pipeline from Spotify. 
 
-For more information on the current Echodb architecture, please see the **[Github repo](https://github.com/nauqh/Echodb)**.
-""")
+    In short, it allows you to:
+
+    * Collect playlist such as Discovery Weekly, Release Radar (or even custom events of your choosing).
+    * Store the data in a scalable database w/ [Postgresql](https://www.postgresql.org/) and [SQLAlchemy](https://www.sqlalchemy.org/).
+    * Leverage a wide range of tools to model and analyze the behavioral data.
+    * Generate reports and deploy online dashboard for easy management.
+
+    For more information on Echodb architecture, please see the **[Github repo](https://github.com/nauqh/Echodb)**
+    """)
+with r:
+    st.subheader("Author")
+    st.markdown("Please feel free to contact us with any issues, comments, or questions.")
+    st.subheader("**Ho Do Minh Quan (Nauqh)**")
+    st.markdown("""
+    * Email: hodominhquan.self@gmail.com
+    * Github: https://github.com/nauqh
+    * Website: https://nauqh.github.io/
+    """)
 
