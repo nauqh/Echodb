@@ -25,6 +25,7 @@ st.markdown("""<h3 style='
 st.markdown("##")
 l, r = st.columns([1.5, 1])
 with l:
+    st.header("Overview")
     tracks, artists = get_timeline("data/logs.log")
     fig = graph_timeline(tracks, artists)
     st.plotly_chart(fig, True)
