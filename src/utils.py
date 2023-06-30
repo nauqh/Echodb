@@ -61,7 +61,7 @@ def graph_portion(tracks: int, artists: int):
 
     fig.update_layout(
         title="New records 2023-06-20",
-        annotations=[dict(text='Records (%)', x=0.5, y=0.5, font_size=15, showarrow=False)])
+        annotations=[dict(text='Records', x=0.5, y=0.5, font_size=15, showarrow=False)])
     return fig
 
 

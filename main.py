@@ -10,7 +10,7 @@ st.set_page_config(
 
 st.markdown("""<h1 style='
                 font-family: Recoleta-Regular; font-weight: 400;
-                font-size: 3.5rem'>Echodb</h1>""",
+                font-size: 3.5rem'>🏬Echodb</h1>""",
             unsafe_allow_html=True)
 
 st.markdown("""<h3 style='
@@ -101,3 +101,20 @@ st.download_button(
     file_name='tracks.csv',
     mime='text/csv',
 )
+
+# TODO: Overview
+st.markdown("##")
+st.subheader("🗃️ About the project")
+st.markdown("""
+Echodb is a tiny system for collecting and scheduling music data pipeline from Spotify. 
+
+In short, it allows you to:
+
+* Collect playlist such as `Discovery Weekly`, `Release Radar` (or even custom events of your choosing).
+* Store the data in a scalable database w/ [Postgresql](https://www.postgresql.org/) and [SQLAlchemy](https://www.sqlalchemy.org/).
+* Leverage a wide range of tools to model and analyze the behavioral data.
+* Generate reports and deploy online dashboard for easy management.
+
+For more information on the current Echodb architecture, please see the **[Github repo](https://github.com/nauqh/Echodb)**.
+""")
+
