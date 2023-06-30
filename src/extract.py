@@ -23,14 +23,6 @@ log = get_log(__name__)
 #     return token
 
 
-def get_token():
-    token = pm(client_id="158589c1394445e79c87f97444c53908",
-               client_secret="7aa2260907054643b565193d87f1cf12",
-               scope="user-library-read playlist-read-private",
-               redirect_uri="http://localhost:7777/callback")
-    return token
-
-
 def get_header(token: str):
     return {"Authorization": "Bearer " + token}
 
