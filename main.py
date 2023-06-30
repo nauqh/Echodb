@@ -135,5 +135,3 @@ with r:
     * Github: https://github.com/nauqh
     * Website: https://nauqh.github.io
     """)
-
-
