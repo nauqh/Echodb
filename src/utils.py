@@ -1,3 +1,7 @@
+"""
+Utility module for transforming data 
+"""
+
 from pandas.api.types import (
     is_categorical_dtype,
     is_datetime64_any_dtype,
@@ -7,7 +11,95 @@ from pandas.api.types import (
 from datetime import datetime as dt
 import pandas as pd
 import streamlit as st
+import plotly.graph_objects as go
 import re
+
+
+@st.cache_data
+def convert_df(df):
+    return df.to_csv(index=False).encode('utf-8')
+
+
+def graph_timeline(tracks: dict, artists: dict):
+    df_tracks = pd.DataFrame({'time': list(tracks.keys()),
+                              'count': list(tracks.values()),
+                              'label': 'tracks'})
+    df_artists = pd.DataFrame({'time': list(artists.keys()),
+                               'count': list(artists.values()),
+                               'label': 'artists'})
+
+    df = pd.merge(df_tracks, df_artists, on='time', how='outer').fillna(0)
+    df = df.sort_values('time')
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(x=df['time'], y=df['count_x'], name='Tracks'))
+    fig.add_trace(go.Bar(x=df['time'], y=df['count_y'], name='Artists'))
+
+    fig.update_layout(
+        title='Tracks and Artists Timeline',
+        xaxis_title='Time',
+        yaxis_title='Count'
+    )
+
+    fig.update_traces(
+        hoverinfo='y', hovertemplate="%{y}")
+
+    return fig
+
+
+def graph_portion(tracks: int, artists: int):
+    labels = ['Playlist', 'Tracks', 'Artists']
+    values = [3, tracks, artists]
+    colors = ['#b9fbc0', '#98f5e1', '#8eecf5',
+              '#90dbf4', '#a3c4f3', '#cfbaf0', 'f1c0e8']
+
+    fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=0.4)])
+    fig.update_traces(name='', textfont_size=15,
+                      hovertemplate='%{label}: %{value}',
+                      marker=dict(colors=colors, line=dict(color='#000000', width=1)))
+
+    fig.update_layout(
+        title="New records 2023-06-20",
+        annotations=[dict(text='Records (%)', x=0.5, y=0.5, font_size=15, showarrow=False)])
+    return fig
+
+
+def graph_sunburst():
+    colors = ['#b9fbc0', '#98f5e1', '#8eecf5',
+              '#90dbf4', '#a3c4f3', '#cfbaf0', 'f1c0e8']
+    fig = go.Figure(go.Sunburst(
+        labels=["Spotify", "Rock", "Pop", "R&B",
+                "EDM", "Rap", "K-Pop", "Metal", "V-Pop"],
+        parents=["", "Spotify", "Spotify", "Spotify",
+                 "Spotify", "Spotify", "Pop", "EDM", "Pop"],
+        values=[10, 14, 12, 10, 2, 6, 6, 4, 4]
+    ))
+
+    fig.update_traces(marker=dict(colors=colors),
+                      textfont_color="#000", textfont_size=15)
+
+    fig.update_layout(title={
+        'text': "Popular genres",
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'},
+        margin=dict(t=0, l=0, r=0, b=0))
+    return fig
+
+
+def calc_timelapse(filename: str):
+    pattern = r"\[\[(\d+:\d+:\d+)\]\]"
+
+    with open(filename) as f:
+        content = f.read()
+
+    matches = re.findall(pattern, content)
+    times = [dt.strptime(match, "%H:%M:%S") for match in matches]
+
+    # Calculate time lapse
+    return times[-1] - times[0]
 
 
 def get_timeline(filename: str) -> tuple[dict, dict]:
@@ -27,8 +119,10 @@ def get_timeline(filename: str) -> tuple[dict, dict]:
                 elif item == 'artist':
                     artists[time] = artists.get(time, 0) + number
 
-        tracks = {dt.strptime(key, "%H:%M:%S").time(): value for key, value in tracks.items()}
-        artists = {dt.strptime(key, "%H:%M:%S").time(): value for key, value in artists.items()}
+        tracks = {dt.strptime(key, "%H:%M:%S").time()
+                              : value for key, value in tracks.items()}
+        artists = {dt.strptime(key, "%H:%M:%S").time()
+                               : value for key, value in artists.items()}
 
     return tracks, artists
 
