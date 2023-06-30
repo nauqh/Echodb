@@ -1,28 +1,33 @@
 """
 Extract data from Spotify API
 """
-import hydra
 import logging
 import pandas as pd
 from tqdm import tqdm
 from requests import get
-from omegaconf import DictConfig
 from spotipy.util import prompt_for_user_token as pm
 from .log import get_log
 
 logging.basicConfig(filename='data/logs.log', filemode='w',
-                    # format="%(asctime)s | %(name)s | %(levelname)s | %(message)s (%(filename)s:%(lineno)d)"
                     format=":orange[[%(asctime)s]] %(levelname)s %(message)s",
                     datefmt='%H:%M:%S')
 log = get_log(__name__)
 
 
-@hydra.main(version_base=None, config_path="../config", config_name="main")
-def get_token(cfg: DictConfig) -> str:
-    token = pm(scope=cfg['spotify']['scope'],
-               client_id=cfg['spotify']['id'],
-               client_secret=cfg['spotify']['secret'],
-               redirect_uri=cfg['spotify']['redirect'])
+# @hydra.main(version_base=None, config_path="../config", config_name="main")
+# def get_token(cfg: DictConfig) -> str:
+#     token = pm(scope=cfg['spotify']['scope'],
+#                client_id=cfg['spotify']['id'],
+#                client_secret=cfg['spotify']['secret'],
+#                redirect_uri=cfg['spotify']['redirect'])
+#     return token
+
+
+def get_token():
+    token = pm(client_id="158589c1394445e79c87f97444c53908",
+               client_secret="7aa2260907054643b565193d87f1cf12",
+               scope="user-library-read playlist-read-private",
+               redirect_uri="http://localhost:7777/callback")
     return token
 
 
