@@ -113,7 +113,7 @@ st.image(image, caption='Echodb architecture')
 
 l, r = st.columns([1, 1])
 with l:
-    st.subheader("About")
+    st.subheader("Project")
     st.markdown("""
     Echodb is a tiny system for collecting and scheduling music data pipeline from Spotify. 
 
