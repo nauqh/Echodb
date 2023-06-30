@@ -113,7 +113,7 @@ st.image(image, caption='Echodb architecture')
 
 l, r = st.columns([1, 1])
 with l:
-    st.subheader("Project")
+    st.header("Infomation")
     st.markdown("""
     Echodb is a tiny system for collecting and scheduling music data pipeline from Spotify. 
 
@@ -127,12 +127,12 @@ with l:
     For more information on Echodb architecture, please see the **[Github repo](https://github.com/nauqh/Echodb)**
     """)
 with r:
-    st.subheader("Author")
-    st.markdown("Please feel free to contact us with any issues, comments, or questions.")
-    st.subheader("**Ho Do Minh Quan (Nauqh)**")
+    st.header("Author")
+    st.markdown("Please feel free to contact me with any issues, comments, or questions.")
+    st.subheader("Ho Do Minh Quan (Nauqh)")
     st.markdown("""
     * Email: hodominhquan.self@gmail.com
     * Github: https://github.com/nauqh
-    * Website: https://nauqh.github.io/
+    * Website: https://nauqh.github.io
     """)
 
