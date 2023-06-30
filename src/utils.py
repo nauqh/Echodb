@@ -69,7 +69,7 @@ def graph_sunburst():
     colors = ['#b9fbc0', '#98f5e1', '#8eecf5',
               '#90dbf4', '#a3c4f3', '#cfbaf0', 'f1c0e8']
     fig = go.Figure(go.Sunburst(
-        labels=["Spotify", "Rock", "Pop (click here)", "R&B",
+        labels=["Spotify", "Rock", "Pop", "R&B",
                 "EDM", "Rap", "K-Pop", "Metal", "V-Pop"],
         parents=["", "Spotify", "Spotify", "Spotify",
                  "Spotify", "Spotify", "Pop", "EDM", "Pop"],
@@ -80,7 +80,7 @@ def graph_sunburst():
                       textfont_color="#000", textfont_size=15)
 
     fig.update_layout(title={
-        'text': "Popular genres",
+        'text': "Popular genres (click at Pop, EDM for interaction)",
         'y': 0.9,
         'x': 0.5,
         'xanchor': 'center',
