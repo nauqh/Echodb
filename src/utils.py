@@ -119,10 +119,8 @@ def get_timeline(filename: str) -> tuple[dict, dict]:
                 elif item == 'artist':
                     artists[time] = artists.get(time, 0) + number
 
-        tracks = {dt.strptime(key, "%H:%M:%S").time()
-                              : value for key, value in tracks.items()}
-        artists = {dt.strptime(key, "%H:%M:%S").time()
-                               : value for key, value in artists.items()}
+        tracks = {dt.strptime(key, "%H:%M:%S").time()                  : value for key, value in tracks.items()}
+        artists = {dt.strptime(key, "%H:%M:%S").time()                   : value for key, value in artists.items()}
 
     return tracks, artists
 
