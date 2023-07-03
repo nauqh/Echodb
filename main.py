@@ -13,7 +13,6 @@ st.markdown("""<h1 style='
                 font-family: Recoleta-Regular; font-weight: 400;
                 font-size: 3.5rem'>🏬 Echodb</h1>""",
             unsafe_allow_html=True)
-
 st.markdown("""<h3 style='
                 font-family: Recoleta-Regular; font-weight: 400;
                 font-size: 1.55rem'>Our sophisticated ELT manages your sloppy streaming data</h3>""",
