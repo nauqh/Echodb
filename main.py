@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 from src.utils import *
-from PIL import Image
+from datetime import datetime as dt
 
 # TODO: APP SETUP
 st.set_page_config(
@@ -33,7 +33,7 @@ with l:
 
 
 with r:
-    st.subheader("[Date]: `2023-06-20`")
+    st.subheader(f"[Date]: `{dt.utcnow().date()}`")
     with open("data/logs.log") as f:
         for line in f.readlines():
             line = line.replace("INFO", ":pencil:")
@@ -106,14 +106,10 @@ st.download_button(
 
 # TODO: Overview
 st.markdown("##")
-st.header("About the project")
-
-image = Image.open('data/stack.jpg')
-st.image(image, caption='Echodb architecture')
 
 l, r = st.columns([1, 1])
 with l:
-    st.subheader("Infomation")
+    st.subheader("Project")
     st.markdown("""
     Echodb is a tiny system for collecting and scheduling music data pipeline from Spotify. 
 
