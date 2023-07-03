@@ -120,7 +120,7 @@ with l:
     * Leverage a wide range of tools to model and analyze the behavioral data.
     * Generate reports and deploy online dashboard for easy management.
 
-    For more information on Echodb architecture, please see the **[Github repo](https://github.com/nauqh/Echodb)**
+    For more information on Echodb architecture, please see the **[Github repo](https://github.com/nauqh/Echodb-app)**
     """)
 with r:
     st.subheader("Author")
